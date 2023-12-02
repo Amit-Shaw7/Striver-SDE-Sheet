@@ -1,17 +1,49 @@
 package O01SetMatrixZeroes;
+
 public class Brute {
+
     public static void setZeroes(int[][] matrix) {
+        // Traversing and finding zeroes
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
-                    markRow(i, matrix);
-                    markCol(j, matrix);
+                    changeWholeRow(matrix, i);
+                    changeWholeColumn(matrix, j);
                 }
             }
         }
 
-        markNegative1ToZero(matrix);
+        // Traversing and converting -1 to zeroes
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] == -1) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        // Printing matrix
         printMatrix(matrix);
+    }
+
+    public static void changeWholeRow(int[][] matrix, int row) {
+        // Traversing through row and making it -1
+        for (int j = 0; j < matrix[0].length; j++) {
+            // We are avoiding to mainipulate the zeroes
+            if (matrix[row][j] != 0) {
+                matrix[row][j] = -1;
+            }
+        }
+    }
+
+    public static void changeWholeColumn(int[][] matrix, int col) {
+        // Traversing through column and making it -1
+        for (int i = 0; i < matrix.length; i++) {
+            // We are avoiding to mainipulate the zeroes
+            if (matrix[i][col] != 0) {
+                matrix[i][col] = -1;
+            }
+        }
     }
 
     public static void printMatrix(int[][] matrix) {
@@ -20,32 +52,6 @@ public class Brute {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
-        }
-    }
-
-    public static void markNegative1ToZero(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] == -1) {
-                    arr[i][j] = 0;
-                }
-            }
-        }
-    }
-
-    public static void markRow(int row, int[][] matrix) {
-        for (int j = 0; j < matrix[0].length; j++) {
-            if (matrix[row][j] != 0) {
-                matrix[row][j] = -1;
-            }
-        }
-    }
-
-    public static void markCol(int col, int[][] matrix) {
-        for (int j = 0; j < matrix.length; j++) {
-            if (matrix[j][col] != 0) {
-                matrix[j][col] = -1;
-            }
         }
     }
 
@@ -58,3 +64,20 @@ public class Brute {
         setZeroes(arr);
     }
 }
+
+/*
+ * Time Complexity - O[(m*n) * (m + n)] + [o(m*n)]
+ * O[
+ * => (m*n) - To traverse matrix
+ * => (m + n) - To traverse row and column and change them to -1
+ * ]
+ * O[m*n] => To traverse and convert -1 to 0
+ */
+
+/*
+ * Space Complexity - O[1]
+ */
+
+/*
+ * Note - This will only work if any element is not -1 in the matrix
+ */
