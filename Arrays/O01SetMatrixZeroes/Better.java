@@ -2,29 +2,31 @@ package O01SetMatrixZeroes;
 
 public class Better {
     public static void setZeroes(int[][] matrix) {
+        // Takinng two 1D array to store mark the col and row if any xero encounters
         int[] row = new int[matrix.length];
         int[] col = new int[matrix[0].length];
 
-        // Marking rows and columns as if either row or column has 0 
-        // the entire row and col must be zero
-        for(int i = 0 ; i < matrix.length; i++){
-            for(int j = 0 ; j < matrix[0].length ; j++){
-                if(matrix[i][j] == 0){
+        // Traversing to find zeroes
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (matrix[i][j] == 0) {
                     row[i] = 1;
                     col[j] = 1;
                 }
             }
         }
 
-        
-        for(int i = 0 ; i < matrix.length; i++){
-            for(int j = 0 ; j < matrix[0].length ; j++){
-                if(row[i] == 1 || col[j] == 1){
+        // Traversig again to get the final result
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                if (row[i] == 1 || col[j] == 1) {
                     matrix[i][j] = 0;
                 }
             }
         }
 
+        //Printing
+        printMatrix(matrix);
     }
 
     public static void printMatrix(int[][] matrix) {
@@ -46,3 +48,17 @@ public class Better {
         printMatrix(arr);
     }
 }
+
+/*
+ * Time Complexity - O(m*n) + o(m*n)
+ * => O(m*n) - To traverse matrix and mark the row and column array
+ * => O(m*n) - To traverse matrix and get the finnal result
+ */
+
+/*
+ * Space Complexity - O(m) + O(n) - Two 1D array of size m and n
+ */
+
+/*
+ * Note - This will work for all and this is the Better approach as it takes less time and space
+ */

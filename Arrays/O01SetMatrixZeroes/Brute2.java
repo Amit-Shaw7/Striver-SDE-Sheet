@@ -65,9 +65,9 @@ public class Brute2 {
  * Time Complexity - O[(m*n) * (m + n)] + [o(m*n)]
  * O[
  * => (m*n) - To traverse matrix
- * => (m + n) - To traverse row and column and change them to -1
+ * => (m + n) - To traverse row and column and change them to 1
  * ]
- * O[m*n] => To traverse and convert -1 to 0
+ * O[m*n] => To traverse and convert 1 to 0
  */
 
 /*
@@ -75,5 +75,5 @@ public class Brute2 {
  */
 
 /*
- * Note - This will work for all but this is the Brute force solution
+ * Note - This will work for all but this is the Brute force solution as it takes more time and space
  */
