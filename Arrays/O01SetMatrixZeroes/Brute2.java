@@ -74,6 +74,3 @@ public class Brute2 {
  * Space Complexity - O(m*n) - Ann array of size m*n
  */
 
-/*
- * Note - This will work for all but this is the Brute force solution as it takes more time and space
- */

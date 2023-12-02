@@ -58,7 +58,3 @@ public class Better {
 /*
  * Space Complexity - O(m) + O(n) - Two 1D array of size m and n
  */
-
-/*
- * Note - This will work for all and this is the Better approach as it takes less time and space
- */
